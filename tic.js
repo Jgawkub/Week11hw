@@ -1,7 +1,7 @@
+
 let hide = $('#hide')
 let show = $('#show')
 let test=$('#test')
-let turns=0
 let reset=$("#reset")
 let cell = $('.cell')
 let cells=$('#cells')
@@ -10,17 +10,37 @@ let player2= "O"
 let currentPlayer=player1
 let swap = $("#switch")
 let start = $('#startGame')
-let c1=$('#cell1')
-let c2=$('#cell2')
-let c3=$('#cell3')
-let c4=$('#cell4')
-let c5=$('#cell5')
-let c6=$('#cell6')
-let c7=$('#cell7')
-let c8=$('#cell8')
-let c9=$('#cell9')
-console.log(c1.text())
 
+function check() {
+  let c1=$('#cell1')
+  let c2=$('#cell2')
+  let c3=$('#cell3')
+  let c4=$('#cell4')
+  let c5=$('#cell5')
+  let c6=$('#cell6')
+  let c7=$('#cell7')
+  let c8=$('#cell8')
+  let c9=$('#cell9')
+  if(c1.text()=="X" && c1.text()===c2.text() && c2.text()===c3.text()){
+    alert("P1 Wins")
+  }
+  if(c4.text()=="X" && c4.text()===c5.text() && c5.text()===c6.text()){
+    alert("P1 Wins")
+  }
+  if(c7.text()=="X" && c7.text()===c8.text() && c8.text()===c9.text()){
+    alert("P1 Wins")
+  }
+  if(c1.text()=="X" && c1.text()===c4.text() && c4.text()===c7.text()){
+    alert("P1 Wins")
+  }
+  
+  if(c2.text()=="X" && c2.text()===c5.text() && c5.text()===c8.text()){
+    alert("P1 Wins")
+  }
+  if(c3.text()=="X" && c3.text()===c6.text() && c6.text()===c9.text()){
+    alert("P1 Wins")
+  }
+}
 
 
 
@@ -33,39 +53,43 @@ start.on('click',()=>{
         Game()
 })
 
-function checkWinner(){
-  if(c1.text()=='X' && c1.text==c2.text==c3.text){
-    console.log('X WINS')
-  }
-}
- checkWinner()
+
 
 
 
 function Game() {
+  
   for (let i=0; i<=9; i++){
   $(`.cell-${i}`).on("click", () => {
     if (currentPlayer == player1 && $(`.cell-${i}`).text() !=="O" ) {
       $(`.cell-${i}`).text("X");
+      check();
       currentPlayer = player2;
       $("#playerTurn").text("O's turn");
+      
     } else if (currentPlayer == player2 && $(`.cell-${i}`).text() !=="X" ) {
       $(`.cell-${i}`).text("O");
+      check();
       currentPlayer = player1;
       $("#playerTurn").text("X's turn");
     }
     console.log(`It is ${currentPlayer}'s turn`);
   });
 }
+
 }
     
 
 reset.on('click',()=>{
   console.log('Resetting the Game')
+  currentPlayer=player1
   for(let i=0; i<=9; i++){ 
   $(`.cell-${i}`).text("")
 $('#playerTurn').text("")} 
 })
+
+
+
 
 // function Game (){
 // for (let i=0; i<=9; i++){
