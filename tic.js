@@ -19,7 +19,11 @@ let c6=$('#cell6')
 let c7=$('#cell7')
 let c8=$('#cell8')
 let c9=$('#cell9')
-console.log(c1)
+console.log(c1.text())
+
+
+
+
 
 $('#playerTurn').hide
 start.on('click',()=>{
@@ -27,24 +31,25 @@ start.on('click',()=>{
     $('#playerTurn').show 
         $('#playerTurn').text("X's turn");
         Game()
-        
 })
 
-checkWinner() 
 function checkWinner(){
-    if(c1.text =='X' && c1===c2===c3){
-     console.log("player 1 won")
-    }
+  if(c1.text()=='X' && c1.text==c2.text==c3.text){
+    console.log('X WINS')
+  }
 }
+ checkWinner()
+
+
 
 function Game() {
   for (let i=0; i<=9; i++){
   $(`.cell-${i}`).on("click", () => {
-    if (currentPlayer == player1) {
+    if (currentPlayer == player1 && $(`.cell-${i}`).text() !=="O" ) {
       $(`.cell-${i}`).text("X");
       currentPlayer = player2;
       $("#playerTurn").text("O's turn");
-    } else if (currentPlayer == player2) {
+    } else if (currentPlayer == player2 && $(`.cell-${i}`).text() !=="X" ) {
       $(`.cell-${i}`).text("O");
       currentPlayer = player1;
       $("#playerTurn").text("X's turn");
@@ -128,10 +133,6 @@ $("#test").show()
 // })
 
 
-
-let a=1
-let b=1
-let c=1
 
 // for(let i=1; i<10;i++){
 //     console.log(`it is turn" ${i}`)
