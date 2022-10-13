@@ -10,50 +10,80 @@ let player2= "O"
 let currentPlayer=player1
 let swap = $("#switch")
 let start = $('#startGame')
-
+let c1=$('#cell1')
+let c2=$('#cell2')
+let c3=$('#cell3')
+let c4=$('#cell4')
+let c5=$('#cell5')
+let c6=$('#cell6')
+let c7=$('#cell7')
+let c8=$('#cell8')
+let c9=$('#cell9')
+console.log(c1)
 
 $('#playerTurn').hide
 start.on('click',()=>{
-    console.log(`${currentPlayer}`)
+    console.log(`It is ${currentPlayer} 's turn `)
     $('#playerTurn').show 
         $('#playerTurn').text("X's turn");
         Game()
+        checkWinner()  
 })
+
+function checkWinner(){
+    if(c1.text() ==='X'){
+     console.log("player 1 won")
+    }
+}
+
+function Game() {
+  cell.on("click", () => {
+    if (currentPlayer == player1) {
+      cell.text("X");
+      currentPlayer = player2;
+      $("#playerTurn").text("O's turn");
+    } else if (currentPlayer == player2) {
+      cell.text("O");
+      currentPlayer = player1;
+      $("#playerTurn").text("X's turn");
+    }
+    console.log(`It is ${currentPlayer}'s turn`);
+  });
+}
     
 
+reset.on('click',()=>{
+    console.log('Resetting the Game')
+   cell.text("")
+$('#playerTurn').text("")
+})
 
-// for(let i=1; i<10;i++){
-//     console.log(`it is turn" ${i}`)
+for (let i=0; i<cell.length; i++){
+    console.log(cell[i])
+}
+
+// function Game(){
+   
+//     if(currentPlayer==player1){
+//         cell.on('click',()=>{
+//             cell.text('X')
+//             $('#playerTurn').text("O's turn")
+//             });currentPlayer=player2}
+       
+//     else if(currentPlayer==player2){
+//         cell.on('click',()=>{
+//             cell.text('O')
+//             $('#playerTurn').text("X's turn")
+//     })
+//     currentPlayer=player1
+// }
 // }
 
 
 
-
-
-
-reset.on('click',()=>{
-    console.log("is this working")
-   cell.text("")
-})
-
-
 // Below is how I am deciding who's turn it is. In this case it always starts with X and if the current player is X it places X in the CELL, switches the player to o and displays that on the screen. It then switches back to X to let them make their turn 
-function Game(){
-cell.on('click',()=>{
-    if(currentPlayer==player1){
-        cell.text("X")
-    currentPlayer=player2
-    console.log(`${currentPlayer}`)
-        $('#playerTurn').text("O's turn")
-}
-        else if(currentPlayer==player2){
-            cell.text('O')
-    currentPlayer=player1
-    console.log(`${currentPlayer}`)
-    $('#playerTurn').text("X's turn")
-        }   
-})
-}
+
+
 
 
 // cell.on('click',()=>{
@@ -89,8 +119,13 @@ $("#test").show()
 //         $('#playerTurn').text("X's turn")
 //     }
 // })
-for (let i=0; i<cell.length; i++){
-    console.log(cell[i])
-}
 
 
+
+let a=1
+let b=1
+let c=1
+
+// for(let i=1; i<10;i++){
+//     console.log(`it is turn" ${i}`)
+// }
