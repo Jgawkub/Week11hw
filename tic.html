@@ -47,15 +47,25 @@
  <Br>
 
 <div class="text-center">
-    <button class="btn btn-danger btn-lg" id="reset">Reset Game</button>
+    <button class="btn btn-danger btn-lg reset " id="reset">Reset Game</button>
     <br>
     <br>
 </div>
 </div>  
 
 
-<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+<div class="alert alert-dark" id='xWin'role="alert">
+    X Wins! Press the Reset button to reset the game!
+   <button class="btn btn-primary btn-lg reset ">RESET</button>
+   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  <div class="alert alert-dark" id='oWin'role="alert">
+    O Wins! Press the Reset button to reset the game!
+    <button class="btn btn-primary btn-lg reset ">RESET</button>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
 
+<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 <script src="node_modules/jquery/dist/jquery.js"></script>
 <script src="tic.js"></script>
 </body>
