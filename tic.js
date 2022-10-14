@@ -7,14 +7,12 @@ let player2= "O"
 let currentPlayer=player1
 let swap = $("#switch")
 let start = $('#startGame')
-let turns = 1
-
+turns=1
 
 
 start.on('click',()=>{
-  turns=1
   currentPlayer=player1
-  console.log(`It is ${currentPlayer} 's turn `)
+  console.log(` Starting game it is ${currentPlayer} 's turn `)
   $('#playerTurn').show 
   $('#playerTurn').text("X's turn");
     Game()
@@ -138,7 +136,7 @@ function Game() {
 reset.on('click',()=>{
   start.prop('disabled',false)
   console.log('Resetting the Game')
-  
+  turns=1
 $('#playerTurn').text("")
   for(let i=0; i<=9; i++){ 
 $(`.cell-${i}`).text("")
