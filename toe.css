@@ -1,0 +1,14 @@
+.b1{
+  
+    font-size: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Josefin Slab', serif;
+    ;
+}
+
+.b1:hover{
+    background-color: brown;
+    opacity: 50%;
+}
