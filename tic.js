@@ -1,9 +1,6 @@
 
-let hide = $('#hide')
-let show = $('#show')
 let test=$('#test')
 let reset=$("#reset")
-let cell = $('.cell')
 let cells=$('#cells')
 let player1= "X"
 let player2= "O"
@@ -11,6 +8,18 @@ let currentPlayer=player1
 let swap = $("#switch")
 let start = $('#startGame')
 
+
+
+
+start.on('click',()=>{
+  console.log(`It is ${currentPlayer} 's turn `)
+  $('#playerTurn').show 
+      $('#playerTurn').text("X's turn");
+      Game()
+})
+
+
+// These boat load of if and else if statements is how I check for the win conditions of the game by seeing if 3 cells have either an X or an O. The checkig for a tie function still eludes me a little as it sometimes declares a tie before the game has even begun
 function check() {
   let c1=$('#cell1')
   let c2=$('#cell2')
@@ -21,42 +30,65 @@ function check() {
   let c7=$('#cell7')
   let c8=$('#cell8')
   let c9=$('#cell9')
+  for (let i=0;i<=0; i++){
   if(c1.text()=="X" && c1.text()===c2.text() && c2.text()===c3.text()){
-    alert("P1 Wins")
+    alert("X WINS")
+  }else if(c4.text()=="X" && c4.text()===c5.text() && c5.text()===c6.text()){
+    alert("X WINS")
+  }else if (c7.text()=="X" && c7.text()===c8.text() && c8.text()===c9.text()){
+    alert("X WINS")
+  }else if(c1.text()=="X" && c1.text()===c4.text() && c4.text()===c7.text()){
+    alert("X WINS")
   }
-  if(c4.text()=="X" && c4.text()===c5.text() && c5.text()===c6.text()){
-    alert("P1 Wins")
+  else if(c2.text()=="X" && c2.text()===c5.text() && c5.text()===c8.text()){
+    alert("X WINS")
   }
-  if(c7.text()=="X" && c7.text()===c8.text() && c8.text()===c9.text()){
-    alert("P1 Wins")
+  else if(c3.text()=="X" && c3.text()===c6.text() && c6.text()===c9.text()){
+    alert("X WINS")
   }
-  if(c1.text()=="X" && c1.text()===c4.text() && c4.text()===c7.text()){
-    alert("P1 Wins")
+  else if(c1.text()=="X" && c1.text()===c5.text() && c5.text()===c9.text()){
+    alert("X WINS")
   }
-  
-  if(c2.text()=="X" && c2.text()===c5.text() && c5.text()===c8.text()){
-    alert("P1 Wins")
+  else if(c3.text()=="X" && c3.text()===c5.text() && c5.text()===c9.text()){
+    alert("X WINS")
   }
-  if(c3.text()=="X" && c3.text()===c6.text() && c6.text()===c9.text()){
-    alert("P1 Wins")
+  else if(c1.text()=="O" && c1.text()===c2.text() && c2.text()===c3.text()){
+    alert("O WINS")
+  }
+  else if(c4.text()=="O" && c4.text()===c5.text() && c5.text()===c6.text()){
+    alert("O WINS")
+  }
+  else if(c7.text()=="O" && c7.text()===c8.text() && c8.text()===c9.text()){
+    alert("O WINS")
+  }
+  else if(c1.text()=="O" && c1.text()===c4.text() && c4.text()===c7.text()){
+    alert("O WINS")
+  }
+ else if(c2.text()=="O" && c2.text()===c5.text() && c5.text()===c8.text()){
+    alert("O WINS")
+  }
+  else if(c3.text()=="O" && c3.text()===c6.text() && c6.text()===c9.text()){
+    alert("O WINS")
+  }
+  else if(c1.text()=="O" && c1.text()===c5.text() && c5.text()===c9.text()){
+    alert("O WINS")
+  }
+ else if(c3.text()=="O" && c3.text()===c5.text() && c5.text()===c9.text()){
+    alert("O WINS")
+  }else if($(`.cell-${i}`).text() !==""){
+    alert('No One Wins ')//I'm asking it to tell me or trying to ask it to tell me that if there are no blank spaces left to delcare a tie. 
+  }
   }
 }
 
 
 
 
-$('#playerTurn').hide
-start.on('click',()=>{
-    console.log(`It is ${currentPlayer} 's turn `)
-    $('#playerTurn').show 
-        $('#playerTurn').text("X's turn");
-        Game()
-})
 
 
 
 
-
+//Game checks who's turn it is and allows a player to place an approrpirate mark on any of the cells. I also call check each time a player has placed a mark to see if someone has won the game. 
 function Game() {
   
   for (let i=0; i<=9; i++){
@@ -75,11 +107,12 @@ function Game() {
     }
     console.log(`It is ${currentPlayer}'s turn`);
   });
+ 
 }
 
 }
     
-
+//Hittting the reset button erases all of the values and switches the player back to player 1. 
 reset.on('click',()=>{
   console.log('Resetting the Game')
   currentPlayer=player1
@@ -130,16 +163,7 @@ $('#playerTurn').text("")}
 
 
 
-//Below I was just playing around with how to show or hide different elements. 
-hide.on('click',()=>{
-    console.log('Wut')
-    $('#test').hide();
-})
 
-show.on('click',()=>{
-    console.log("yerp")
-$("#test").show()
-})
 
 
 //this was an old way I was trying to get a swap turn functionality. 
